@@ -11,7 +11,7 @@ import json
 
 import openai
 
-from util import is_alphabet
+from ChatDict.util import is_alphabet
 
 
 class Dict:
@@ -22,6 +22,8 @@ class Dict:
 
     def __init__(self):
         if not os.path.exists(self.ENV_PATH):
+            if not os.path.exists('./env'):
+                os.makedirs('./env')
             with open(self.ENV_PATH, 'w+', encoding='utf-8') as env_f:
                 json.dump({"OPENAI_API_KEYS": False}, env_f)
 
